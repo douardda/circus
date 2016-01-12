@@ -56,6 +56,8 @@ class TestUtil(TestCase):
 
         class WorkerMock(mock.MagicMock):
             def __getattr__(self, attr):
+                if attr in ('_mock_methods', '_spec_set', '_spec_class'):
+                    return self.__dict__.get(attr)
                 raise util.AccessDenied()
 
         worker = WorkerMock()
