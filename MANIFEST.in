@@ -1,8 +1,11 @@
 include CONTRIBUTORS.txt
 include README.rst
 include LICENSE
-include pip-requirements.txt
+include doc-requirements.txt
 include tox.ini
 recursive-include examples *
 recursive-include docs *
 recursive-include extras *
+recursive-include circus/tests/config *.ini
+recursive-include circus/tests/venv *
+
