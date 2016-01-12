@@ -12,7 +12,6 @@
 # serve to show the default.
 
 import sys, os
-import mozilla_sphinx_theme
 
 class Mock(object):
     def __init__(self, *args, **kwargs):
@@ -125,8 +124,14 @@ exclude_patterns = ['**/commands-intro.rst']
 
 html_short_title = "Circus"
 
-html_theme_path = [os.path.dirname(mozilla_sphinx_theme.__file__)]
-html_theme = 'mozilla'
+try:
+    import mozilla_sphinx_theme
+    html_theme_path = [os.path.dirname(mozilla_sphinx_theme.__file__)]
+    html_theme = 'mozilla'
+except ImportError:
+    print('WARNING: the mozilla_sphinx_theme cannot be imported. '
+          'Please install it to properly build the documentation.',
+          'See https://github.com/ametaireau/mozilla-sphinx-theme')
 
 #html_logo = "images/circus32.png"
 
