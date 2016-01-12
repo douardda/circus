@@ -5,6 +5,8 @@ from circus.commands import get_commands
 def generate_commands(app):
     path = os.path.join(app.srcdir, "for-ops", "commands")
     ext = app.config['source_suffix']
+    if isinstance(ext, list): # true with recent sphinx versions
+        ext = ext[0]
     if not os.path.exists(path):
         os.makedirs(path)
 
